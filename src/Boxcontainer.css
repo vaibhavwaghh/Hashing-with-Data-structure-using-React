@@ -1,0 +1,135 @@
+#k1 {
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  padding: 15px 20px;
+  font-size: 1.3rem;
+  width: 19rem;
+  height: 4rem;
+}
+#k2 {
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  padding: 15px 20px;
+  font-size: 1.3rem;
+  width: 26rem;
+  height: 4rem;
+}
+#k3 {
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  padding: 15px 20px;
+  font-size: 1.3rem;
+  width: 15rem;
+  height: 4rem;
+}
+#l {
+  padding: 15px 20px;
+}
+#j {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  display: flex;
+  gap: 2rem;
+}
+.button-1 {
+  cursor: pointer;
+  width: 7rem;
+  height: 3rem;
+  font-size: 1.3rem;
+  margin-top: 0.3rem;
+}
+.button-2 {
+  cursor: pointer;
+  width: 7rem;
+  height: 3rem;
+  font-size: 1.3rem;
+}
+.box-container {
+  display: flex;
+  margin-top: 4.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.box {
+  height: 100px;
+  background-color: blue;
+  border: 2px solid black;
+  width: 112px;
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.9rem;
+}
+.number {
+  font-size: 2rem;
+  text-align: center;
+}
+.user-input-1 {
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  padding: 15px 5px;
+  font-size: 1.3rem;
+  width: 11rem;
+  text-align: center;
+}
+.container-2 {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.large-container {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+.mm {
+  /* position: relative;
+  top: 66px;
+  left: -18px; */
+
+  color: orange;
+}
+.arrow {
+  font-size: 4rem;
+  position: relative;
+  bottom: 4.3rem;
+}
+.nnnn {
+  position: relative;
+  bottom: 5rem;
+}
+.new-container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  margin-top: 2.5rem;
+}
+.explain {
+  /* background-color: red; */
+  width: 43rem;
+  margin-top: 6rem;
+  /* hight: 11rem; */
+  font-size: 1.3rem;
+  border: 2px solid black;
+  overflow: auto;
+}
+.ee {
+  height: 8rem;
+}
+.box-11 {
+  width: 100px;
+  height: 100px;
+  background-color: lightblue;
+  margin: 10px;
+}
+/* .box-containerr {
+  display: flex;
+  flex-direction: row;
+} */
+.conttt {
+  display: flex;
+  flex-direction: row;
+  gap: 8rem;
+}
