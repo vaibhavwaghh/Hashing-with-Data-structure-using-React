@@ -1,7 +1,8 @@
 import React, { createContext, useContext } from "react";
 
-export function Div({ key1 }) {
-  const val = key1 + "px";
+export function Div({ key1, leftPosition }) {
+  console.log(leftPosition);
+  const val = 529.2000122070312 + "px";
   const fontvalue = "1.9rem";
   const componentstyle = {
     height: "90px",
@@ -16,6 +17,7 @@ export function Div({ key1 }) {
     flexDirection: "column",
     alignItems: "center",
     fontSize: fontvalue,
+    backgroundColor: "blue",
   };
   return (
     <>
