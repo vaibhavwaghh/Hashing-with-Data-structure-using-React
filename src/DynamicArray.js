@@ -9,8 +9,7 @@ import React, {
 export function DynamicArray({
   boxes,
   isBlinking,
-  k,
-  setk,
+
   setIsBlinking,
   array,
   leftPosition,

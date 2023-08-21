@@ -29,7 +29,6 @@ function MainComponent() {
   const [collidingElements, setCollidingElement] = useState([]);
   const [numberOfCollisions, setNumberOfCollisions] = useState(0);
   const [isBlinking, setIsBlinking] = useState(false);
-  const [k, setk] = useState(false);
   const [insertedHashValue, setinsertedHashValue] = useState([]);
   const [collidedHashValue, setcollidedHashValue] = useState([]);
   const [searchedHashValue, setsearchedHashValue] = useState([]);
@@ -218,7 +217,6 @@ function MainComponent() {
       const updatedElements1 = [...insertedHashValue];
       updatedElements1[insertedHashValue.length] = hashValue;
       setinsertedHashValue(updatedElements1);
-      setk(hashValue);
     } else {
       const updatedElements1 = [...collidingElements];
       updatedElements1[collidingElements.length] = key;
@@ -247,7 +245,7 @@ function MainComponent() {
           );
           console.log(hashValue);
           alert("COLLISION HAS OCCURED");
-          setk(hashValue);
+
           const updatedElements1 = [...collidedHashValue];
           updatedElements1[collidedHashValue.length] = hashValue;
           setcollidedHashValue(updatedElements1);
@@ -279,7 +277,7 @@ So the new Hash-Index is ${hashValue}`);
         }
         if (hashValue <= size && updatedBoxes.includes(-1)) {
           alert("COLLISION HAS OCCURED");
-          setk(parseInt(hashValue));
+
           const updatedElements1 = [...collidedHashValue];
           updatedElements1[collidedHashValue.length] = hashValue;
           setcollidedHashValue(updatedElements1);
@@ -312,22 +310,22 @@ So the new Hash-Index is ${hashValue}`);
         if (newhashValue <= size) {
           alert("COLLISION HAS OCCURED");
           console.log(newhashValue);
-          setk(parseInt(newhashValue));
+
           const updatedElements1 = [...collidedHashValue];
-          updatedElements1[collidedHashValue.length] = hashValue;
+          updatedElements1[collidedHashValue.length] = newhashValue;
           setcollidedHashValue(updatedElements1);
           updatedBoxes[newhashValue] = key;
           setMyBoxes(updatedBoxes);
           setExplain(
             ` Double hashing is a collision resolution technique used in hash tables. 
-            It works by using two hash functions to compute two different hash values for a given key.
+            It works by using two hash functions to compute two different hash values for a key.
              The first hash function is used to compute the initial hash value, and the second hash function is used to compute the step size for the probing sequence.
-            \n Here the new hash value is ${newhashValue}`
+            Here the new Hash-Index is ${newhashValue}`
           );
         }
       } else if (collisionResolution === "Open hashing") {
         alert("COLLISION HAS OCCURED");
-        setk(parseInt(hashValue));
+
         const updatedElements1 = [...collidedHashValue];
         updatedElements1[collidedHashValue.length] = hashValue;
         setcollidedHashValue(updatedElements1);
@@ -627,9 +625,7 @@ So the new Hash-Index is ${hashValue}`);
           array={arr}
           boxes={boxes}
           isBlinking={isBlinking}
-          k={k}
           setIsBlinking={setIsBlinking}
-          setk={setk}
           leftPosition={leftPosition}
           setLeftPosition={setLeftPosition}
           insertedHashValue={insertedHashValue}
