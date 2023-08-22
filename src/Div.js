@@ -1,23 +1,23 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
+import { PositionContext } from "./index";
+export function Div({ key1 }) {
+  const { leftPosition } = React.useContext(PositionContext);
+  const [left, setleft] = useState([]);
 
-export function Div({ key1, leftPosition }) {
   console.log(leftPosition);
-  const val = 529.2000122070312 + "px";
+  const val = leftPosition + "px";
   const fontvalue = "1.9rem";
   const componentstyle = {
     height: "90px",
-    backgroundColor: "white",
     border: "2px solid black",
     width: "110px",
-    display: "flex",
     position: "relative",
     top: `75px`,
     left: val,
-    textAlign: "centre",
-    flexDirection: "column",
+    textAlign: "center",
     alignItems: "center",
     fontSize: fontvalue,
-    backgroundColor: "blue",
+    backgroundColor: "green",
   };
   return (
     <>

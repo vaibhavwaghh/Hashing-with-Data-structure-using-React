@@ -94,9 +94,9 @@
   flex-direction: column;
 }
 .mm {
-  /* position: relative;
-  top: 66px;
-  left: -18px; */
+  color: orange;
+  position: relative;
+  left: 6px;
 
   color: orange;
 }

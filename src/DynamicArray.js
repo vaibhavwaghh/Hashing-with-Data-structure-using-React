@@ -5,39 +5,25 @@ import React, {
   createContext,
   useContext,
 } from "react";
-
+import { PositionContext } from "./index";
 export function DynamicArray({
   boxes,
   isBlinking,
 
   setIsBlinking,
   array,
-  leftPosition,
-  setLeftPosition,
+
   insertedHashValue,
   collidedHashValue,
   searchedHashValue,
   deletedHashValue,
+
   key1,
   key2,
 }) {
-  const secondElementRef = useRef(null);
-  useEffect(() => {
-    if (secondElementRef.current) {
-      setLeftPosition(secondElementRef.current.getBoundingClientRect().left);
-      console.log(leftPosition);
-    }
-  }, []);
-  // var l = k;
-  // if (isBlinking) {
-  //   setBlink(true);
-  // }
-  // if (array) {
-  //   setk(array[0]);
-  //   setk(array[1]);
-  // }
-  // conso le.log(k);
-  // console.log(array);
+  const { leftPosition, setLeftPosition, k } =
+    React.useContext(PositionContext);
+
   useEffect(() => {
     if (isBlinking) {
       const blinkTimer = setTimeout(() => {
@@ -46,47 +32,21 @@ export function DynamicArray({
       return () => clearTimeout(blinkTimer);
     }
   }, [isBlinking]);
-
-  //   return (
-  //     <div className="box-container">
-  //       {boxes.map((value, index) => {
-
-  //    return(
-  //         <div
-  //           ref={index === k ? secondElementRef : null}
-  //           key={index}
-  //           id="box"
-  //           className={`box ${index == k && isBlinking ? "blink" : ""}`}
-  //         >
-  //           <p className="nn"> {value}</p>
-  //           <p className="mm">{index}</p>
-  //         </div>
-  //    );
-  //     )}}
-  //    </div>
-  //   );
-  // }
-  // const [positionsToHighlight, setpositionsToHighlight] = useState([]);
-  // const updadedElement = [...insertedElement];
-  // setpositionsToHighlight(updadedElement);
-  // var collidedArray = [];
-
+  console.log(k);
   var deledArray = [];
   var searchedArray = [];
+  var collidedArray = [];
   const insertedarray = boxes.map((item, i) => Number(item));
-
-  const collidedArray = collidedHashValue.map((item, i) => Number(item));
+  collidedArray = collidedHashValue.map((item, i) => Number(item));
   deledArray = deletedHashValue.map((item, i) => Number(item));
   searchedArray = searchedHashValue.map((item, i) => Number(item));
-
-  // if (deledArray.length === 0) {
-  //   console.log(searchedArray);
-  // }
-
-  // console.log(searchedArray);
-  // console.log(deledArray);
-  // console.log(boxes );
-  // console.log(searchedArray, positionsToHighlight3);
+  const secondElementRef = useRef(null);
+  useEffect(() => {
+    if (secondElementRef.current) {
+      setLeftPosition(secondElementRef.current.getBoundingClientRect().left);
+    }
+  }, [k]);
+  console.log(leftPosition);
   return (
     <div className="box-container">
       {boxes.map((value, index) => {
@@ -96,6 +56,7 @@ export function DynamicArray({
           highlight = true;
         }
         const highlight1 = collidedArray.includes(index);
+        // console.log(highlight1);
         const highlight2 = searchedArray.includes(index);
         const highlight3 = deledArray.includes(index);
         if (highlight2 && isBlinking) {
@@ -111,7 +72,12 @@ export function DynamicArray({
         }
 
         return (
-          <div key={index} id="box" style={{ backgroundColor: highlightcolor }}>
+          <div
+            key={index}
+            ref={index == k ? secondElementRef : null}
+            id="box"
+            style={{ backgroundColor: highlightcolor }}
+          >
             <p className="nn">{value}</p>
             <p className="mm">{index}</p>
           </div>
@@ -119,5 +85,4 @@ export function DynamicArray({
       })}
     </div>
   );
-  searchedArray = [];
 }

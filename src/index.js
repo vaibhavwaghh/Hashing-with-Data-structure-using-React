@@ -9,14 +9,14 @@ import ReactDOM from "react-dom/client";
 import "./Boxcontainer.css";
 import { Div } from "./Div.js";
 import { DynamicArray } from "./DynamicArray";
-import { type } from "@testing-library/user-event/dist/type";
+export const PositionContext = createContext();
 
 function MainComponent() {
   const [hashingFunctionName, sethashingFunctionName] = useState(false);
   const [collisionResolution, setCollisionResolution] = useState(false);
-  const [key, setKey] = useState(false);
-  const [key1, setKey1] = useState(false);
-  const [key2, setKey2] = useState(false);
+  const [key, setKey] = useState("");
+  const [key1, setKey1] = useState("");
+  const [key2, setKey2] = useState("");
   const [numBoxes, setNumBoxes] = useState(false);
   const [visible, setVisible] = useState(false);
   const [size, setSize] = useState(false);
@@ -33,8 +33,9 @@ function MainComponent() {
   const [collidedHashValue, setcollidedHashValue] = useState([]);
   const [searchedHashValue, setsearchedHashValue] = useState([]);
   const [deletedHashValue, setdeletedHashValue] = useState([]);
-  const [leftPosition, setLeftPosition] = useState(false);
   const [arr, setArr] = useState([]);
+  const [leftPosition, setLeftPosition] = useState(false);
+  const [k, setk] = useState(null);
   function vpw1(e) {
     setExplain(false);
 
@@ -103,13 +104,7 @@ function MainComponent() {
     // setcode(` setMyBoxes(Array(value).fill(-1))`);
   }
   // console.log(isBlinking);
-  function updateBox() {
-    if (key.length <= 6 && /^\d+$/.test(key)) {
-      handleInsert1();
-    } else {
-      alert("Please Enter a positive Integer of maximum length 6");
-    }
-  }
+
   function findKeyIndices(arr, keys) {
     const indices = [];
     for (let i = 0; i < arr.length; i++) {
@@ -192,6 +187,7 @@ function MainComponent() {
   function updateBox1() {
     if (key1.length <= 6 && /^\d+$/.test(key1)) {
       handleSearch();
+      setKey1("");
     } else {
       alert("Please Enter a positive Integer of maximum length 6");
     }
@@ -199,6 +195,7 @@ function MainComponent() {
   function updateBox2() {
     if (key2.length <= 6 && /^\d+$/.test(key2)) {
       handleDelete();
+      setKey2("");
     } else {
       alert("Please Enter a positive Integer of maximum length 6");
     }
@@ -329,8 +326,8 @@ So the new Hash-Index is ${hashValue}`);
         const updatedElements1 = [...collidedHashValue];
         updatedElements1[collidedHashValue.length] = hashValue;
         setcollidedHashValue(updatedElements1);
-
-        const newDiv = <Div key1={key} leftPosition={leftPosition} />;
+        setk(hashValue);
+        const newDiv = <Div key1={key} />;
         setMyBoxes1([...boxes1, newDiv]);
       }
     }
@@ -539,8 +536,16 @@ So the new Hash-Index is ${hashValue}`);
   // var arr2 = [1, 2, 3, 4];
   // arr2 = [];
   // console.log(arr2);
+  function updateBox() {
+    if (key.length <= 6 && /^\d+$/.test(key)) {
+      handleInsert1();
+      setKey("");
+    } else {
+      alert("Please Enter a positive Integer of maximum length 6");
+    }
+  }
   return (
-    <>
+    <PositionContext.Provider value={{ leftPosition, setLeftPosition, k }}>
       <div className="container">
         <select value={hashingFunctionName} onChange={vpw1} name="" id="k1">
           <option>Select a hashing function </option>
@@ -586,6 +591,7 @@ So the new Hash-Index is ${hashValue}`);
                 className="user-input-1"
                 type="text"
                 onChange={vpw4}
+                value={key}
               />
               <button onClick={updateBox} className="button-2">
                 INSERT
@@ -599,6 +605,7 @@ So the new Hash-Index is ${hashValue}`);
                 className="user-input-1"
                 type="text"
                 onChange={vpw41}
+                value={key1}
               />
               <button onClick={updateBox1} className="button-2">
                 SEARCH
@@ -612,6 +619,7 @@ So the new Hash-Index is ${hashValue}`);
                 className="user-input-1"
                 type="text"
                 onChange={vpw42}
+                value={key2}
               />
               <button onClick={updateBox2} className="button-2">
                 DELETE
@@ -626,8 +634,6 @@ So the new Hash-Index is ${hashValue}`);
           boxes={boxes}
           isBlinking={isBlinking}
           setIsBlinking={setIsBlinking}
-          leftPosition={leftPosition}
-          setLeftPosition={setLeftPosition}
           insertedHashValue={insertedHashValue}
           collidedHashValue={collidedHashValue}
           searchedHashValue={searchedHashValue}
@@ -655,7 +661,7 @@ So the new Hash-Index is ${hashValue}`);
           </div>
         </div>
       )}
-    </>
+    </PositionContext.Provider>
   );
 }
 const root = ReactDOM.createRoot(document.getElementById("root"));
