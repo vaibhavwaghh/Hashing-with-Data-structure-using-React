@@ -35,6 +35,7 @@ function MainComponent() {
   const [deletedHashValue, setdeletedHashValue] = useState([]);
   const [arr, setArr] = useState([]);
   const [leftPosition, setLeftPosition] = useState(false);
+  const [topPosition, setTopPosition] = useState(false);
   const [k, setk] = useState(null);
   function vpw1(e) {
     setExplain(false);
@@ -74,8 +75,9 @@ function MainComponent() {
     setKey2(e.target.value);
   }
 
-  function handleSubmit(value) {
+  function handleSubmit(event, value) {
     console.log(hashingFunctionName, collisionResolution, size);
+    event.preventDefault();
     if (
       hashingFunctionName === "Select a hashing function" ||
       collisionResolution === "Select a collision resolution technique" ||
@@ -184,20 +186,24 @@ function MainComponent() {
       setMyBoxes(updatedBoxes);
     }
   }
-  function updateBox1() {
+  function updateBox1(e) {
+    e.preventDefault();
     if (key1.length <= 6 && /^\d+$/.test(key1)) {
       handleSearch();
       setKey1("");
     } else {
       alert("Please Enter a positive Integer of maximum length 6");
+      setKey("");
     }
   }
-  function updateBox2() {
+  function updateBox2(e) {
+    e.preventDefault();
     if (key2.length <= 6 && /^\d+$/.test(key2)) {
       handleDelete();
       setKey2("");
     } else {
       alert("Please Enter a positive Integer of maximum length 6");
+      setKey2("");
     }
   }
 
@@ -536,95 +542,114 @@ So the new Hash-Index is ${hashValue}`);
   // var arr2 = [1, 2, 3, 4];
   // arr2 = [];
   // console.log(arr2);
-  function updateBox() {
+  function updateBox(e) {
+    e.preventDefault();
     if (key.length <= 6 && /^\d+$/.test(key)) {
       handleInsert1();
       setKey("");
     } else {
       alert("Please Enter a positive Integer of maximum length 6");
+      setKey("");
     }
   }
   return (
-    <PositionContext.Provider value={{ leftPosition, setLeftPosition, k }}>
+    <PositionContext.Provider
+      value={{ leftPosition, setLeftPosition, k, topPosition, setTopPosition }}
+    >
       <div className="container">
-        <select value={hashingFunctionName} onChange={vpw1} name="" id="k1">
-          <option>Select a hashing function </option>
-          <option>Direct Hashing</option>
-          <option>Multiplication method</option>
-          <option>Modulo division</option>
-          <option>Mid-square</option>
-          <option>Folding method</option>
-        </select>
-        <select value={collisionResolution} onChange={vpw2} name="" id="k2">
-          <option>Select a collision resolution technique</option>
-          <option>Linear probing</option>
-          <option>Quadratic probing</option>
-          <option>Double hashing</option>
-          <option>Open hashing</option>
-        </select>
-        <select value={size} onChange={vpw3} name="" id="k3">
-          <option>Choose table size</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
-          <option>13</option>
-          <option>14</option>
-          <option>15</option>
-        </select>
-        <button onClick={() => handleSubmit(numBoxes)} className="button-1">
+        <form
+          className="containerrr"
+          onSubmit={(event) => handleSubmit(event, numBoxes)}
+        >
+          <select value={hashingFunctionName} onChange={vpw1} name="" id="k1">
+            <option>Select a hashing function </option>
+            <option>Direct Hashing</option>
+            <option>Multiplication method</option>
+            <option>Modulo division</option>
+            <option>Mid-square</option>
+            <option>Folding method</option>
+          </select>
+          <select value={collisionResolution} onChange={vpw2} name="" id="k2">
+            <option>Select a collision resolution technique</option>
+            <option>Linear probing</option>
+            <option>Quadratic probing</option>
+            <option>Double hashing</option>
+            <option>Open hashing</option>
+          </select>
+          <select value={size} onChange={vpw3} name="" id="k3">
+            <option>Choose table size</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+          </select>
+          {/* <button onClick={() => handleSubmit(numBoxes)} className="button-1">
           SUBMIT
-        </button>
+        </button> */}
+          <input className="buttonn-2" type="submit" value="SUBMIT" />
+        </form>
         <div className="large-container">
           {visible && (
-            <div className="container-2">
-              <input
-                placeholder="Enter any number"
-                className="user-input-1"
-                type="text"
-                onChange={vpw4}
-                value={key}
-              />
-              <button onClick={updateBox} className="button-2">
+            <form onSubmit={(event) => updateBox(event)}>
+              <div className="container-2">
+                <input
+                  placeholder="Enter any number"
+                  className="user-input-1"
+                  type="text"
+                  onChange={vpw4}
+                  value={key}
+                />
+                {/* <button onClick={updateBox} className="button-2">
                 INSERT
-              </button>
-            </div>
+              </button> */}
+                <input className="button-2" type="submit" value="INSERT" />
+              </div>
+            </form>
           )}
           {visible && (
-            <div className="container-2">
-              <input
-                placeholder="Enter any number"
-                className="user-input-1"
-                type="text"
-                onChange={vpw41}
-                value={key1}
-              />
-              <button onClick={updateBox1} className="button-2">
+            <form onSubmit={(event) => updateBox1(event)}>
+              <div className="container-2">
+                <input
+                  placeholder="Enter any number"
+                  className="user-input-1"
+                  type="text"
+                  onChange={vpw41}
+                  value={key1}
+                />
+                {/* <button onClick={updateBox1} className="button-2">
                 SEARCH
-              </button>
-            </div>
+              </button> */}
+                <input type="submit" value="SEARCH" className="button-2" />
+              </div>
+            </form>
           )}
           {visible && (
-            <div className="container-2">
-              <input
-                placeholder="Enter any number"
-                className="user-input-1"
-                type="text"
-                onChange={vpw42}
-                value={key2}
-              />
-              <button onClick={updateBox2} className="button-2">
+            <form onSubmit={(event) => updateBox2(event)}>
+              <div className="container-2">
+                <input
+                  placeholder="Enter any number"
+                  className="user-input-1"
+                  type="text"
+                  onChange={vpw42}
+                  value={key2}
+                />
+                {/* <button onClick={updateBox2} className="button-2">
                 DELETE
-              </button>
-            </div>
+              </button> */}
+                <input className="button-2" type="submit" value="DELETE" />
+              </div>
+            </form>
           )}
         </div>{" "}
       </div>

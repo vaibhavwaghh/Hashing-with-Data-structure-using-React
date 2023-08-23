@@ -31,6 +31,10 @@
   justify-content: center;
   align-items: center;
 }
+.containerrr {
+  display: flex;
+  gap: 2rem;
+}
 .container {
   display: flex;
   gap: 2rem;
@@ -45,10 +49,19 @@
 }
 .button-2 {
   cursor: pointer;
-  width: 5.5rem;
+  width: 6rem;
   height: 3rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   background-color: #ffff00;
+}
+.buttonn-2 {
+  cursor: pointer;
+  width: 6rem;
+  height: 3rem;
+  font-size: 1.2rem;
+  background-color: #ffff00;
+  position: relative;
+  top: 4px;
 }
 .box-container {
   display: flex;
@@ -110,10 +123,10 @@
   bottom: 5rem;
 }
 .new-container {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   /* align-items: center; */
-  margin-top: 2.5rem;
+  /* margin-top: 2.5rem; */
 }
 .explain {
   background-color: #006fff47;
@@ -148,10 +161,9 @@
   background-color: lightblue;
   margin: 10px;
 }
-/* .box-containerr {
-  display: flex;
-  flex-direction: row;
-} */
+.box-containerr {
+  display: inline-block;
+}
 .conttt {
   display: flex;
   flex-direction: row;

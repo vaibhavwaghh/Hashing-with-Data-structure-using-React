@@ -21,7 +21,7 @@ export function DynamicArray({
   key1,
   key2,
 }) {
-  const { leftPosition, setLeftPosition, k } =
+  const { leftPosition, setLeftPosition, setTopPosition, topPosition, k } =
     React.useContext(PositionContext);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export function DynamicArray({
       return () => clearTimeout(blinkTimer);
     }
   }, [isBlinking]);
-  console.log(k);
+  // console.log(k);
   var deledArray = [];
   var searchedArray = [];
   var collidedArray = [];
@@ -44,9 +44,11 @@ export function DynamicArray({
   useEffect(() => {
     if (secondElementRef.current) {
       setLeftPosition(secondElementRef.current.getBoundingClientRect().left);
+      setTopPosition(secondElementRef.current.getBoundingClientRect().top);
     }
   }, [k]);
-  console.log(leftPosition);
+  console.log(topPosition, leftPosition);
+  // console.log(leftPosition);
   return (
     <div className="box-container">
       {boxes.map((value, index) => {
