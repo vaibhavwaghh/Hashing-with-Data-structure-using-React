@@ -7,7 +7,7 @@ export function Div({ key1 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [bottomPosition1, setBottomPosition1] = useState([]);
   const [currentIndex1, setCurrentIndex1] = useState(0);
-  console.log(topPosition);
+  console.log(topPosition, leftPosition);
   // Add the current leftPosition value to leftPosition1 array
   React.useEffect(() => {
     setLeftPosition1((prevLeftPosition1) => [
@@ -27,16 +27,17 @@ export function Div({ key1 }) {
     bottomPosition1[(currentIndex % bottomPosition1.length) + 1] - 230 + "px";
   const fontvalue = "1.9rem";
   const componentstyle = {
+    width: "100px",
     height: "90px",
     border: "2px solid black",
-    width: "110px",
     position: "relative",
     left: val1,
     top: val2,
-    textAlign: "center",
-    alignItems: "center",
+    // textAlign: "center",
+
     fontSize: fontvalue,
     backgroundColor: "green",
+    display: "block",
   };
 
   // Increment the currentIndex for the next execution
@@ -48,7 +49,7 @@ export function Div({ key1 }) {
     <>
       <div style={componentstyle} className="boxxx">
         <span className="arrow">↓</span>
-        <p className="nnnn"> {key1}</p>
+        <span className="nnnn"> {key1}</span>
       </div>
     </>
   );

@@ -666,7 +666,7 @@ So the new Hash-Index is ${hashValue}`);
         />
       )}
 
-      {visible && <div className="box-containerr">{boxes1}</div>}
+      {visible && <div>{boxes1}</div>}
       {visible && (
         <div className="conttt">
           {" "}
