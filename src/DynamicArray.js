@@ -1,25 +1,14 @@
-import React, {
-  useRef,
-  useEffect,
-  useState,
-  createContext,
-  useContext,
-} from "react";
+import React, { useRef, useEffect } from "react";
 import { PositionContext } from "./index";
 export function DynamicArray({
   boxes,
   isBlinking,
 
   setIsBlinking,
-  array,
 
-  insertedHashValue,
   collidedHashValue,
   searchedHashValue,
   deletedHashValue,
-
-  key1,
-  key2,
 }) {
   const { leftPosition, setLeftPosition, setTopPosition, topPosition, k } =
     React.useContext(PositionContext);

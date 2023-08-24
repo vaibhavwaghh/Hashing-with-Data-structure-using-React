@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { useState } from "react";
 import { PositionContext } from "./index";
 
 export function Div({ key1 }) {
@@ -6,7 +6,7 @@ export function Div({ key1 }) {
   const [leftPosition1, setLeftPosition1] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [bottomPosition1, setBottomPosition1] = useState([]);
-  const [currentIndex1, setCurrentIndex1] = useState(0);
+
   console.log(topPosition, leftPosition);
   // Add the current leftPosition value to leftPosition1 array
   React.useEffect(() => {

@@ -1,10 +1,4 @@
-import React, {
-  useRef,
-  useEffect,
-  useState,
-  createContext,
-  useContext,
-} from "react";
+import React, { useState, createContext } from "react";
 import ReactDOM from "react-dom/client";
 import "./Boxcontainer.css";
 import { Div } from "./Div.js";
@@ -33,7 +27,7 @@ function MainComponent() {
   const [collidedHashValue, setcollidedHashValue] = useState([]);
   const [searchedHashValue, setsearchedHashValue] = useState([]);
   const [deletedHashValue, setdeletedHashValue] = useState([]);
-  const [arr, setArr] = useState([]);
+  const [v1, setv1] = useState(false);
   const [leftPosition, setLeftPosition] = useState(false);
   const [topPosition, setTopPosition] = useState(false);
   const [k, setk] = useState(null);
@@ -95,7 +89,7 @@ function MainComponent() {
       setcollidedHashValue([]);
       setsearchedHashValue([]);
       setdeletedHashValue([]);
-
+      setv1(false);
       setInsertedElement([]);
       setDeletedElement([]);
       setSearchedElement([]);
@@ -328,7 +322,7 @@ So the new Hash-Index is ${hashValue}`);
         }
       } else if (collisionResolution === "Open hashing") {
         alert("COLLISION HAS OCCURED");
-
+        setv1(true);
         const updatedElements1 = [...collidedHashValue];
         updatedElements1[collidedHashValue.length] = hashValue;
         setcollidedHashValue(updatedElements1);
@@ -655,7 +649,6 @@ So the new Hash-Index is ${hashValue}`);
       </div>
       {visible && (
         <DynamicArray
-          array={arr}
           boxes={boxes}
           isBlinking={isBlinking}
           setIsBlinking={setIsBlinking}
@@ -666,7 +659,7 @@ So the new Hash-Index is ${hashValue}`);
         />
       )}
 
-      {visible && <div>{boxes1}</div>}
+      {visible && v1 && <div>{boxes1}</div>}
       {visible && (
         <div className="conttt">
           {" "}
