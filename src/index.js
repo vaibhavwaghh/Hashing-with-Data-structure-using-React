@@ -223,10 +223,19 @@ function MainComponent() {
 
       if (collisionResolution === "Linear probing") {
         let oldhash = hashValue;
+        console.log("OLD HASH");
+        
         while (updatedBoxes[hashValue] !== -1) {
-          if (hashValue <= size) {
+          console.log("hashvalue",hashValue,size , hashValue<=size);
+          
+          if (Number(hashValue) < Number(size)) {
+            console.log("ALLA");
+            
             hashValue++;
-          } else {
+          } 
+          else {
+            console.log("NHI ALLA");
+
             hashValue = 0;
             if (!boxes.includes(-1)) {
               break;
@@ -587,6 +596,11 @@ So the new Hash-Index is ${hashValue}`);
             <option>13</option>
             <option>14</option>
             <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+            <option>19</option>
+            <option>20</option>
           </select>
           {/* <button onClick={() => handleSubmit(numBoxes)} className="button-1">
           SUBMIT
