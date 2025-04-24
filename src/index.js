@@ -228,14 +228,10 @@ function MainComponent() {
         while (updatedBoxes[hashValue] !== -1) {
           console.log("hashvalue",hashValue,size , hashValue<=size);
           
-          if (Number(hashValue) < Number(size)) {
-            console.log("ALLA");
-            
+          if (Number(hashValue) < Number(size)) {            
             hashValue++;
           } 
           else {
-            console.log("NHI ALLA");
-
             hashValue = 0;
             if (!boxes.includes(-1)) {
               break;
